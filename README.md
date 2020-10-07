@@ -1,20 +1,123 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Ansible mikevdberge.ansible-servicenow-midserver role
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+[![Build Status](https://img.shields.io/travis/Mike van den Berge/ansible-servicenow-midserver.svg)](https://travis-ci.org/github/mikevdberge/ansible-servicenow-midserver)
+[![Galaxy](http://img.shields.io/badge/galaxy-Mike van den Berge.ansible-servicenow-midserver-role-blue.svg)](https://galaxy.ansible.com/Mike van den Berge/ansible-servicenow-midserver)
+[![GitHub Tags](https://img.shields.io/github/tag/Mike van den Berge/ansible-servicenow-midserver.svg)](https://github.com/mikevdberge/ansible-servicenow-midserver)
+[![GitHub Stars](https://img.shields.io/github/stars/mikevadberge/ansible-servicenow-midserver.svg)](https://github.com/mikevadberge/ansible-servicenow-midserver.)
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+> `Mike van den Berge.ansible-servicenow-midserver` is an [Ansible](http://www.ansible.com) role which:
+>
+> * installs ansible-servicenow-midserver
+> * configures ansible-servicenow-midserver
+> * manages ansible-servicenow-midserver
+> * configures service
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Installation
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Using `ansible-galaxy`:
+
+```shell
+$ ansible-galaxy install mikevdberge.ansible-servicenow-midserver
+```
+
+Using `requirements.yml`:
+
+```yaml
+- src: mikevdberge.ansible-servicenow-midserver
+```
+
+Using `git`:
+
+```shell
+$ git clone https://github.com/mikevdberge/ansible-servicenow-midserver.git mikevdberge.ansible-servicenow-midserver
+```
+
+## Dependencies
+
+* Ansible >= 2.0
+* dependency a
+* dependency b
+
+## Variables
+
+Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
+
+```yaml
+---
+# package name (version)
+ansible_servicenow-midserver_package: ansible-servicenow-midserver
+# service name
+ansible_servicenow-midserver_service_name: ansible-servicenow-midserver
+# start on boot
+ansible_servicenow-midserver_service_enabled: yes
+# current state: started, stopped
+ansible_servicenow-midserver_service_state: started
+
+```
+
+## Handlers
+
+These are the handlers that are defined in `handlers/main.yml`.
+
+```yaml
+---
+- name: restart ansible-servicenow-midserver
+  service:
+    name: "{{ ansible_servicenow-midserver_service_name }}"
+    state: restarted
+  when: ansible_servicenow-midserver_service_state != 'stopped'
+
+```
+
+## A new section after the handler section
+
+Lorem ipsum dolor sit atem ...
+
+## Usage
+
+This is an example playbook:
+
+```yaml
+---
+- hosts: all
+  # pre_tasks for installing dependencies for running the tests within docker
+  # pre_tasks:
+  #  - name: Installing openssh
+  #    action: "{{ ansible_pkg_mgr }} pkg=my-package state=present"
+  roles:
+    - Mike van den Berge.ansible-servicenow-midserver
+  vars:
+    foo: bar
+
+```
+
+## A new section after the usage section
+
+Lorem ipsum dolor sit atem ...
+
+## Testing
+
+```shell
+$ git clone https://github.com/mikevdberge/ansible-servicenow-midserver.git
+$ cd ansible-servicenow-midserver
+$ make test
+```
+
+## Contributing
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+*Note: To update the `README.md` file please install and run `ansible-role`:*
+
+```shell
+$ gem install ansible-role
+$ ansible-role docgen
+```
+
+## License
+Copyright (c) QHSE Professionals under the MIT license.
