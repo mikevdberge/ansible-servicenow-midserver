@@ -1,11 +1,11 @@
-# Ansible mikevdberge.ansible-servicenow-midserver role
+# Ansible ansible-servicenow-midserver role
 
-[![Build Status](https://img.shields.io/travis/Mike van den Berge/ansible-servicenow-midserver.svg)](https://travis-ci.org/github/mikevdberge/ansible-servicenow-midserver)
-[![Galaxy](http://img.shields.io/badge/galaxy-Mike van den Berge.ansible-servicenow-midserver-role-blue.svg)](https://galaxy.ansible.com/Mike van den Berge/ansible-servicenow-midserver)
-[![GitHub Tags](https://img.shields.io/github/tag/Mike van den Berge/ansible-servicenow-midserver.svg)](https://github.com/mikevdberge/ansible-servicenow-midserver)
-[![GitHub Stars](https://img.shields.io/github/stars/mikevadberge/ansible-servicenow-midserver.svg)](https://github.com/mikevadberge/ansible-servicenow-midserver.)
+[![Build Status](https://img.shields.io/travis/mikevdberge/ansible-servicenow-midserver.svg)](https://travis-ci.org/github/mikevdberge/ansible-servicenow-midserver)
+[![Galaxy](http://img.shields.io/badge/galaxy-mikevdberge.ansible-servicenow-midserver-role-blue.svg)](https://galaxy.ansible.com/mikevdberge/ansible-servicenow-midserver)
+[![GitHub Tags](https://img.shields.io/github/tag/mikevdberge/ansible-servicenow-midserver.svg)](https://github.com/mikevdberge/ansible-servicenow-midserver)
+[![GitHub Stars](https://img.shields.io/github/stars/mikevadberge/ansible-servicenow-midserver.svg)](https://github.com/mikevdberge/ansible-servicenow-midserver.)
 
-> `Mike van den Berge.ansible-servicenow-midserver` is an [Ansible](http://www.ansible.com) role which:
+> `mikevdberge.ansible-servicenow-midserver` is an [Ansible](http://www.ansible.com) role which:
 >
 > * installs ansible-servicenow-midserver
 > * configures ansible-servicenow-midserver
@@ -17,7 +17,7 @@
 Using `ansible-galaxy`:
 
 ```shell
-$ ansible-galaxy install mikevdberge.ansible-servicenow-midserver
+$ ansible-galaxy install ansible-servicenow-midserver
 ```
 
 Using `requirements.yml`:
