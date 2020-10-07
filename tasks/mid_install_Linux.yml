@@ -1,0 +1,114 @@
+---
+# Generate ServiceNow instance MID download uri for Linux operating systems
+
+- name: Get ServiceNow build stats
+  uri:
+    url: "https://{{ now_instance }}/stats.do"
+    return_content: yes
+  register: now_instance_stats
+
+- name: Get ServiceNow build facts
+  set_fact: 
+    now_instance_build_date: "{{ now_instance_stats.content | regex_search('Build date: ([^<]{1,})') }}"
+    now_instance_mid_buildstamp: "{{ now_instance_stats.content | regex_search('MID buildstamp: ([^<]{1,})') }}"
+
+- name: Set ServiceNow build facts
+  set_fact:
+    now_instance_build_date: "{{ now_instance_build_date.split(': ')[1] }}"
+    now_instance_mid_buildstamp: "{{ now_instance_mid_buildstamp.split(': ')[1] }}"
+
+- name: Set ServiceNow build dates
+  set_fact:
+    now_instance_build_1: "{{ now_instance_build_date.split('_')[0].split('-')[2] }}"
+    now_instance_build_2: "{{ now_instance_build_date.split('_')[0].split('-')[0] }}"   
+    now_instance_build_3: "{{ now_instance_build_date.split('_')[0].split('-')[1] }}"
+
+- name: Create MID install path
+  file:
+    path: "{{ now_mid_base_path }}"
+    state: directory
+
+- name: Download and unzip MID install file
+  unarchive:
+    src: "{{ now_mid_base_https_uri }}/{{ now_instance_build_1 }}/{{ now_instance_build_2 }}/{{ now_instance_build_3 }}/mid.{{ now_instance_mid_buildstamp }}.linux.{{ ansible_architecture | regex_replace('_', '-') }}.zip"
+    dest: "{{ now_mid_base_path }}"
+    remote_src: yes
+
+# The ServiceNow MID configuration file (config.xml) will always appear changed as the mid.instance.password parameter is
+# encrypted on first run. Perform a cheap detection of first install through lineinfile, however, this will impact change 
+- name: Update MID Configuration
+  action: template src=templates/config.xml.j2 dest={{ now_mid_base_path }}/agent/config.xml
+  # lineinfile: 
+  #   dest: "{{ now_mid_base_path }}/agent/config.xml"
+  #   regexp: <parameter name="mid.instance.password" value="YOUR_INSTANCE_PASSWORD_HERE" encrypt="true"/>$
+  #   state: absent
+- name: Update MID shconf Configuration
+  lineinfile: 
+     path: "{{ now_mid_base_path }}/agent/bin/mid.shconf"
+     # The String to Search
+     regexp: "SYSTEMD_KILLMODE=process" 
+     # The String to Replace
+     line: "SYSTEMD_KILLMODE=control-group"
+     state: present
+     backup: yes
+  
+- name: Update MID shconf override Configuration
+  lineinfile: 
+     path: "{{ now_mid_base_path }}/agent/bin/mid.shconf_override"
+     # The String to Search
+     regexp: "PROMPT_BEFORE_OWNERSHIP_CHANGE=true" 
+     # The String to Replace
+     line: "PROMPT_BEFORE_OWNERSHIP_CHANGE=false"
+     state: present
+     backup: yes
+
+- name: Check if MID service exists`
+  stat:
+    path: /etc/init.d/mid
+  register: p
+
+# TODO detect if server daemon already installed
+- name: Install MID service
+  raw: "{{ now_mid_base_path }}/agent/bin/mid.sh install"
+  register: install_result
+
+- name: Bugfix MID service incorrect PIDFile location
+  lineinfile: 
+     path: "/etc/systemd/system/mid.service"
+     # The String to Search
+     regexp: "PIDFile=/opt/servicenow/agent/bin/../work/mid.pid" 
+     # The String to Replace
+     line: "PIDFile=/opt/servicenow/agent/work/mid.pid"
+     state: present
+     backup: no
+
+- name: Restart service mid, in all cases, also issue daemon-reload to pick up config changes
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: mid.service
+     
+# the below service does not reload the configuration so it doen not pickup our changes to the file
+#- name: Start service mid, if not started
+#  service: 
+#    name: mid.service
+#    enabled: true
+#    state: reloaded
+
+
+# The ServiceNow MID configuration file (config.xml) will always appear changed as the mid.instance.password parameter is
+# encrypted on first run. Perform a cheap detection of first install through win_lineinfile, however, this will impact change 
+# operations such as updating the mid.instance.password.
+
+# - name: MID configuration updated
+#   win_lineinfile:
+#     dest: "{{ now_mid_base_path }}/agent/config.xml"
+#     regexp: <parameter name="mid.instance.password" value="YOUR_INSTANCE_PASSWORD_HERE" encrypt="true"/>$
+#     state: absent
+#   notify: Update MID configuration (Linux)
+
+# - name: Configure MID service
+#   win_service:
+#     name: snc_mid
+#     start_mode: auto
+#     state: started
