@@ -1,6 +1,6 @@
 galaxy_info:
-  author: Reuben Stump
-  description: Ansible role to install and configure ServiceNow MID server instances
+  author: Mike van den Berge
+  description: Ansible role to install and configure a ServiceNow MID server agent
   company: ServiceNow
   license: license MIT
 
@@ -164,6 +164,7 @@ galaxy_info:
     - servicenow
     - system
     - server
+    - midserver
 
     # List tags for your role here, one per line. A tag is
     # a keyword that describes and categorizes the role.
