@@ -1,7 +1,7 @@
 # Ansible ansible-servicenow-midserver role
 
 [![Build Status](https://img.shields.io/travis/mikevdberge/ansible-servicenow-midserver.svg)](https://travis-ci.org/github/mikevdberge/ansible-servicenow-midserver)
-[![Galaxy](http://img.shields.io/badge/galaxy-mikevdberge.ansible-servicenow-midserver-role-blue.svg)](https://galaxy.ansible.com/mikevdberge/ansible-servicenow-midserver)
+[![Galaxy](http://img.shields.io/badge/galaxy-mikevdberge.ansible_servicenow_midserver-blue.svg?style=flat-square)](https://galaxy.ansible.com/mikevdberge/ansible-servicenow-midserver)
 [![GitHub Tags](https://img.shields.io/github/tag/mikevdberge/ansible-servicenow-midserver.svg)](https://github.com/mikevdberge/ansible-servicenow-midserver)
 [![GitHub Stars](https://img.shields.io/github/stars/mikevadberge/ansible-servicenow-midserver.svg)](https://github.com/mikevdberge/ansible-servicenow-midserver.)
 
