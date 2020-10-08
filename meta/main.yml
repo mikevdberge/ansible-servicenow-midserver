@@ -1,19 +1,20 @@
+---
 galaxy_info:
   author: Mike van den Berge
   description: Ansible role to install and configure a ServiceNow MID server agent
   company: ServiceNow
   license: license MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 2.0
   platforms:
     - name: EL
       versions:
-      - all
+        - all
     - name: Ubuntu
       versions:
-      - all
+        - all
     - name: Windows
       versions:
-      - all
+        - all
     - name: MacOSX
 
   # Optionally specify the branch Galaxy will use when accessing the GitHub
