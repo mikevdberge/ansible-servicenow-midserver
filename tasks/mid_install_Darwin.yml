@@ -8,7 +8,7 @@
   register: now_instance_stats
 
 - name: Get ServiceNow build facts
-  set_fact: 
+  set_fact:
     now_instance_build_date: "{{ now_instance_stats.content | regex_search('Build date: ([^<]{1,})') }}"
     now_instance_mid_buildstamp: "{{ now_instance_stats.content | regex_search('MID buildstamp: ([^<]{1,})') }}"
 
@@ -20,7 +20,7 @@
 - name: Set ServiceNow build dates
   set_fact:
     now_instance_build_1: "{{ now_instance_build_date.split('_')[0].split('-')[2] }}"
-    now_instance_build_2: "{{ now_instance_build_date.split('_')[0].split('-')[0] }}"   
+    now_instance_build_2: "{{ now_instance_build_date.split('_')[0].split('-')[0] }}"
     now_instance_build_3: "{{ now_instance_build_date.split('_')[0].split('-')[1] }}"
 
 - name: Set ServiceNow install uri

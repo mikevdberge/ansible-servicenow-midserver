@@ -8,7 +8,7 @@
   register: now_instance_stats
 
 - name: Get ServiceNow build facts
-  set_fact: 
+  set_fact:
     now_instance_build_date: "{{ now_instance_stats.content | regex_search('Build date: ([^<]{1,})') }}"
     now_instance_mid_buildstamp: "{{ now_instance_stats.content | regex_search('MID buildstamp: ([^<]{1,})') }}"
 
@@ -20,7 +20,7 @@
 - name: Set ServiceNow build dates
   set_fact:
     now_instance_build_1: "{{ now_instance_build_date.split('_')[0].split('-')[2] }}"
-    now_instance_build_2: "{{ now_instance_build_date.split('_')[0].split('-')[0] }}"   
+    now_instance_build_2: "{{ now_instance_build_date.split('_')[0].split('-')[0] }}"
     now_instance_build_3: "{{ now_instance_build_date.split('_')[0].split('-')[1] }}"
 
 - name: Create MID install path
@@ -43,20 +43,20 @@
   #   regexp: <parameter name="mid.instance.password" value="YOUR_INSTANCE_PASSWORD_HERE" encrypt="true"/>$
   #   state: absent
 - name: Update MID shconf Configuration
-  lineinfile: 
+  lineinfile:
      path: "{{ now_mid_base_path }}/agent/bin/mid.shconf"
      # The String to Search
-     regexp: "SYSTEMD_KILLMODE=process" 
+     regexp: "SYSTEMD_KILLMODE=process"
      # The String to Replace
      line: "SYSTEMD_KILLMODE=control-group"
      state: present
      backup: yes
-  
+
 - name: Update MID shconf override Configuration
-  lineinfile: 
+  lineinfile:
      path: "{{ now_mid_base_path }}/agent/bin/mid.shconf_override"
      # The String to Search
-     regexp: "PROMPT_BEFORE_OWNERSHIP_CHANGE=true" 
+     regexp: "PROMPT_BEFORE_OWNERSHIP_CHANGE=true"
      # The String to Replace
      line: "PROMPT_BEFORE_OWNERSHIP_CHANGE=false"
      state: present
@@ -73,10 +73,10 @@
   register: install_result
 
 - name: Bugfix MID service incorrect PIDFile location
-  lineinfile: 
+  lineinfile:
      path: "/etc/systemd/system/mid.service"
      # The String to Search
-     regexp: "PIDFile=/opt/servicenow/agent/bin/../work/mid.pid" 
+     regexp: "PIDFile=/opt/servicenow/agent/bin/../work/mid.pid"
      # The String to Replace
      line: "PIDFile=/opt/servicenow/agent/work/mid.pid"
      state: present
@@ -87,7 +87,7 @@
     state: restarted
     daemon_reload: yes
     name: mid.service
-     
+
 # the below service does not reload the configuration so it doen not pickup our changes to the file
 #- name: Start service mid, if not started
 #  service: 
