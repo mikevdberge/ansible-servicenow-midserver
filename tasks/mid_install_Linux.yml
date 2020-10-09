@@ -59,7 +59,7 @@
      # The String to Replace
      line: "SYSTEMD_KILLMODE=control-group"
      state: present
-     backup: yes
+     backup: no
 
 - name: Update MID shconf override Configuration
   lineinfile:
@@ -69,7 +69,7 @@
      # The String to Replace
      line: "PROMPT_BEFORE_OWNERSHIP_CHANGE=false"
      state: present
-     backup: yes
+     backup: no
 
 - name: Update MID shconf override Configuration
   lineinfile:
@@ -79,17 +79,17 @@
      # The String to Replace
      line: "RUN_AS_USER={{ now_mid_base_user }}"
      state: present
-     backup: yes
+     backup: no
 
 - name: Update MID shconf override Configuration
   lineinfile:
      path: "{{ now_mid_base_path }}/agent/bin/mid.shconf_override"
      # The String to Search
-     regexp: "RUN_AS_GROUP="
+     regexp: "GROUP_NAME="
      # The String to Replace
-     line: "RUN_AS_GROUP={{ now_mid_base_group }}"
+     line: "GROUP_NAME={{ now_mid_base_group }}"
      state: present
-     backup: yes
+     backup: no
 
 - name: Check if MID service exists`
   stat:
