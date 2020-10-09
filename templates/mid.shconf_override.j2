@@ -12,11 +12,11 @@
 # Put a user name here if you want to run the service by a non-root user.
 # The specified user is going to be the owner of the entire agent directory.
 # If leaving empty, the owner is unchanged.
-RUN_AS_USER={{ now_mid_user }}
+RUN_AS_USER={{ now_mid_base_user }}
 
 # Put a group name here who is going to be the owner group of the entire agent directory.
 # If leaving empty, the group is unchanged.
-GROUP_NAME={{ now_mid_group }}
+GROUP_NAME={{ now_mid_base_group }}
 
 # Set a flag to control whether the script will prompt for confirmation before changing
 # owner or group of the agent directory
