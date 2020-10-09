@@ -35,12 +35,16 @@ $ git clone https://github.com/mikevdberge/ansible-servicenow-midserver.git mike
 ## Dependencies
 
 * Ansible >= 2.0
-* dependency a
-* dependency b
 
 ## Variables
 
 Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
+| Variables | Required | Default value | Description |
+|now_instance_mid_name| | |
+|now_mid_base_https_uri|https://install.service-now.com/glide/distribution/builds/package/mid||
+|now_mid_base_http_uri|http://install.service-now.com/glide/distribution/builds/package/mid||
+|now_mid_base_path_win|c:/servicenow||
+|now_mid_base_path|/opt/servicenow||
 
 ```yaml
 ---
