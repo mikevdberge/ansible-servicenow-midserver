@@ -29,6 +29,11 @@
     group: "{{ now_mid_base_group }}"
     owner: "{{ now_mid_base_user }}"
     state: directory
+    
+- name: Install unzip 
+  package:
+    name: unzip
+    state: present
 
 - name: Download and unzip MID install file
   unarchive:
