@@ -7,17 +7,17 @@
 
 > `mikevdberge.ansible-servicenow-midserver` is an [Ansible](http://www.ansible.com) role which:
 >
-> * installs ansible-servicenow-midserver
-> * configures ansible-servicenow-midserver
-> * manages ansible-servicenow-midserver
-> * configures service
+> * installs Servicenow MID server agent
+> * configures ServiceNow MID server agent
+> * manages ServiceNow MID server agent
+> * configures mid service
 
 ## Installation
 
 Using `ansible-galaxy`:
 
 ```shell
-$ ansible-galaxy install ansible-servicenow-midserver
+$ ansible-galaxy install mikevdberge.ansible-servicenow-midserver
 ```
 
 Using `requirements.yml`:
@@ -91,9 +91,9 @@ This is an example playbook:
   #  - name: Installing openssh
   #    action: "{{ ansible_pkg_mgr }} pkg=my-package state=present"
   roles:
-    - Mike van den Berge.ansible-servicenow-midserver
+    - mikevdberge.ansible-servicenow-midserver
   vars:
-    foo: bar
+    now_instance_mid_name: my_midserver_agent
 
 ```
 
