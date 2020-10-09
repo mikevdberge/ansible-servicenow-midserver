@@ -40,11 +40,11 @@ $ git clone https://github.com/mikevdberge/ansible-servicenow-midserver.git mike
 
 Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 | Variables | Required | Default value | Description |
-|now_instance_mid_name| | |
-|now_mid_base_https_uri|https://install.service-now.com/glide/distribution/builds/package/mid||
-|now_mid_base_http_uri|http://install.service-now.com/glide/distribution/builds/package/mid||
-|now_mid_base_path_win|c:/servicenow||
-|now_mid_base_path|/opt/servicenow||
+|now_instance_mid_name| No | | |
+|now_mid_base_https_uri| yes |https://install.service-now.com/glide/distribution/builds/package/mid| |
+|now_mid_base_http_uri| yes | http://install.service-now.com/glide/distribution/builds/package/mid| |
+|now_mid_base_path_win| yes | c:/servicenow| |
+|now_mid_base_path| yes | /opt/servicenow| |
 
 ```yaml
 ---
