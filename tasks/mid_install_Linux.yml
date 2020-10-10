@@ -22,12 +22,14 @@
     now_instance_build_1: "{{ now_instance_build_date.split('_')[0].split('-')[2] }}"
     now_instance_build_2: "{{ now_instance_build_date.split('_')[0].split('-')[0] }}"
     now_instance_build_3: "{{ now_instance_build_date.split('_')[0].split('-')[1] }}"
+    now_instance_build: "{{ now_instance_build_1 }}/{{ now_instance_build_2 }}/{{ now_instance_build_3 }}"
+
+- debug:
+    msg: "Instance build {{ now_instance_build }}"
 
 - name: Create MID install path
   file:
     path: "{{ now_mid_base_path }}"
-    #group: "{{ now_mid_base_group }}"
-    #owner: "{{ now_mid_base_user }}"
     state: directory
 
 - name: Install unzip 
@@ -44,7 +46,7 @@
 - name: Update MID Configuration
   action: template src=templates/config.xml.j2 dest={{ now_mid_base_path }}/agent/config.xml
 
-- name: Update MID shconf overrid Configuration
+- name: Update MID shconf override Configuration
   action: template src=templates/mid.shconf_override.j2 dest={{ now_mid_base_path }}/agent/bin/mid.shconf_override
 
 - name: Update MID shconf Configuration
