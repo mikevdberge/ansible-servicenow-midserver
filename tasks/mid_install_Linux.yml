@@ -63,7 +63,7 @@
   lineinfile:
     path: "{{ now_mid_base_path }}/agent/conf/wrapper-override.conf"
     # The String to Search
-    regexp: "#wrapper.java.maxmemory"
+    regexp: "wrapper.java.maxmemory"
     # The String to Replace
     line: "wrapper.java.maxmemory: {{ wrapper.java.maxmemory }}"
     state: present
