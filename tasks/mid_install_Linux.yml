@@ -25,10 +25,7 @@
 
 - name:  Set ServiceNow build path
   set_fact:
-    now_instance_build: "{{ now_instance_build_1 }}/{{ now_instance_build_2 }}/{{ now_instance_build_3 }}"
-
-- debug:
-    msg: "Instance build {{ now_instance_build }}"
+    now_instance_build: "{{ now_instance_build_1 }}/{{ now_instance_build_2 }}/{{ now_instance_build_3 }}/mid.{{ now_instance_mid_buildstamp }}"
 
 - name: Create MID install path
   file:
@@ -42,7 +39,7 @@
 
 - name: Download and unzip MID install file
   unarchive:
-    src: "{{ now_mid_base_https_uri }}/{{ now_instance_build_1 }}/{{ now_instance_build_2 }}/{{ now_instance_build_3 }}/mid.{{ now_instance_mid_buildstamp }}.linux.{{ ansible_architecture | regex_replace('_', '-') }}.zip"
+    src: "{{ now_mid_base_https_uri }}/{{ now_instance_build }}.linux.{{ ansible_architecture | regex_replace('_', '-') }}.zip"
     dest: "{{ now_mid_base_path }}"
     remote_src: yes
 
