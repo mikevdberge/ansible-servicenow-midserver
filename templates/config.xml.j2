@@ -62,11 +62,11 @@
 
        <!-- These parameters specify a proxy server the MID server will use BOTH for contacting
             your Service-now instance AND for downloading upgrades. -->
-       <!--
-       <parameter name="mid.proxy.use_proxy" value="true"/>
-       <parameter name="mid.proxy.host" value="YOUR_PROXY_HOST"/>
-       <parameter name="mid.proxy.port" value="YOUR_PROXY_PORT"/>
-       -->
+       
+       <parameter name="mid.proxy.use_proxy" value="{{ mid_proxy_use_proxy }}"/>
+       <parameter name="mid.proxy.host" value="{{ mid_proxy_host }}"/>
+       <parameter name="mid.proxy.port" value="{{ mid_proxy_port }}"/>
+       
 
        <!-- Set these parameters ONLY if your proxy requires a user name and password. -->
        <!--

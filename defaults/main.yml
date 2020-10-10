@@ -6,4 +6,7 @@ now_mid_base_path_win: "c:/servicenow"
 now_mid_base_path: "/opt/servicenow"
 now_mid_base_user:
 now_mid_base_group:
+mid_proxy_use_proxy: false
+mid_proxy_port:
+mid_proxy_host:
 wrapper_java_maxmemory: 1024
