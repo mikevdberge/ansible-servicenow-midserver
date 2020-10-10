@@ -59,15 +59,15 @@
      state: present
      backup: no
 
-#- name: Update MID shconf override Configuration
-#  lineinfile:
-#     path: "{{ now_mid_base_path }}/agent/bin/mid.shconf_override"
-#     # The String to Search
-#     regexp: "PROMPT_BEFORE_OWNERSHIP_CHANGE=true"
-#     # The String to Replace
-#     line: "PROMPT_BEFORE_OWNERSHIP_CHANGE=false"
-#     state: present
-#     backup: no
+- name: Update wrapper-override.conf Configuration
+  lineinfile:
+    path: "{{ now_mid_base_path }}/agent/conf/wrapper-override.conf"
+    # The String to Search
+    regexp: "#wrapper.java.maxmemory"
+    # The String to Replace
+    line: "wrapper.java.maxmemory: {{ wrapper.java.maxmemory }}"
+    state: present
+    backup: no
 
 # - name: Update MID shconf override Configuration
 #   lineinfile:
