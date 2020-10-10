@@ -47,6 +47,16 @@ Here is a list of all the default variables for this role, which are also availa
 | now_mid_base_http_uri  | true     | http://install.service-now.com/glide/distribution/builds/package/mid      | Https endpoint for package download |
 | now_mid_base_path_win  | true     | c:/servicenow          | Base installation path on Windows|
 | now_mid_base_path  | true     | /opt/servicenow          | Base installation on Linux |
+| now_mid_base_user  | false     |           | User |
+| now_mid_base_group  | false     |           | Group |
+| mid_proxy_use_proxy  | false     | false    | User proxy |
+| mid_proxy_host  | false     |     | Proxy host|
+| mid_proxy_port  | false     |     | Proxy port|
+| mid_proxy_username  | false     |     | Proxy user name|
+| mid_proxy_password  | false     |     | Proxy user password|
+| wrapper_java_maxmemory  | false     | 1024    | Maximum Java Heap Size (in MB) |
+
+
 
 ```yaml
 ---
