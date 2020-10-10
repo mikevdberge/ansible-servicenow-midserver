@@ -69,26 +69,6 @@
     state: present
     backup: no
 
-# - name: Update MID shconf override Configuration
-#   lineinfile:
-#      path: "{{ now_mid_base_path }}/agent/bin/mid.shconf_override"
-#      # The String to Search
-#      regexp: "RUN_AS_USER="
-#      # The String to Replace
-#      line: "RUN_AS_USER={{ now_mid_base_user }}"
-#      state: present
-#      backup: no
-
-# - name: Update MID shconf override Configuration
-#   lineinfile:
-#      path: "{{ now_mid_base_path }}/agent/bin/mid.shconf_override"
-#      # The String to Search
-#      regexp: "GROUP_NAME="
-#      # The String to Replace
-#      line: "GROUP_NAME={{ now_mid_base_group }}"
-#      state: present
-#      backup: no
-
 - name: Check if MID service exists`
   stat:
     path: /etc/init.d/mid
