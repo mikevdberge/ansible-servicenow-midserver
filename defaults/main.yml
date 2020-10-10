@@ -4,5 +4,6 @@ now_mid_base_https_uri: "https://install.service-now.com/glide/distribution/buil
 now_mid_base_http_uri: "http://install.service-now.com/glide/distribution/builds/package/mid"
 now_mid_base_path_win: "c:/servicenow"
 now_mid_base_path: "/opt/servicenow"
-now_mid_base_user: "mid_user"
-now_mid_base_group: "servicenow"
+now_mid_base_user:
+now_mid_base_group:
+wrapper.java.maxmemory: 1024
