@@ -59,7 +59,7 @@
      state: present
      backup: no
 
-- name: Update wrapper-override.conf Configuration
+- name: Update override.conf Configuration
   lineinfile:
     path: "{{ now_mid_base_path }}/agent/conf/wrapper-override.conf"
     # The String to Search
