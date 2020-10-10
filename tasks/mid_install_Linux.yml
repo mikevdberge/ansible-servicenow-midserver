@@ -39,8 +39,6 @@
   unarchive:
     src: "{{ now_mid_base_https_uri }}/{{ now_instance_build_1 }}/{{ now_instance_build_2 }}/{{ now_instance_build_3 }}/mid.{{ now_instance_mid_buildstamp }}.linux.{{ ansible_architecture | regex_replace('_', '-') }}.zip"
     dest: "{{ now_mid_base_path }}"
-    #group: "{{ now_mid_base_group }}"
-    #owner: "{{ now_mid_base_user }}"
     remote_src: yes
 
 - name: Update MID Configuration
