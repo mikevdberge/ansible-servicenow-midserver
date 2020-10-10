@@ -22,6 +22,9 @@
     now_instance_build_1: "{{ now_instance_build_date.split('_')[0].split('-')[2] }}"
     now_instance_build_2: "{{ now_instance_build_date.split('_')[0].split('-')[0] }}"
     now_instance_build_3: "{{ now_instance_build_date.split('_')[0].split('-')[1] }}"
+
+- name:  Set ServiceNow build path
+  set fact:
     now_instance_build: "{{ now_instance_build_1 }}/{{ now_instance_build_2 }}/{{ now_instance_build_3 }}"
 
 - debug:
