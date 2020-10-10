@@ -6,4 +6,4 @@ now_mid_base_path_win: "c:/servicenow"
 now_mid_base_path: "/opt/servicenow"
 now_mid_base_user:
 now_mid_base_group:
-wrapper.java.maxmemory: 1024
+wrapper_java_maxmemory: 1024

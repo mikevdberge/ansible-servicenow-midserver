@@ -59,13 +59,13 @@
      state: present
      backup: no
 
-- name: Update override.conf Configuration
+- name: Update wrapper-override.conf Configuration java maxmemory
   lineinfile:
     path: "{{ now_mid_base_path }}/agent/conf/wrapper-override.conf"
     # The String to Search
     regexp: "wrapper.java.maxmemory"
     # The String to Replace
-    line: "wrapper.java.maxmemory: {{ wrapper.java.maxmemory }}"
+    line: "wrapper.java.maxmemory: {{ wrapper_java_maxmemory }}"
     state: present
     backup: no
 
