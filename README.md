@@ -43,8 +43,8 @@ Here is a list of all the default variables for this role, which are also availa
 | Variables | Required | Default value | Description |
 |-----------|----------|---------------|-------------|
 | now_instance_mid_name  | false     |           | Name of the MID Server agent |
-| now_mid_base_https_uri  | true     | https://install.service-now.com/glide/distribution/builds/package/mid    | Https endpoint for package download |
-| now_mid_base_http_uri  | true     | http://install.service-now.com/glide/distribution/builds/package/mid      | Https endpoint for package download |
+| now_mid_base_https_uri  | true     | https://install.service-now.com/glide/distribution/builds/package/app-signed    | Https endpoint for package download |
+| now_mid_base_http_uri  | true     | http://install.service-now.com/glide/distribution/builds/package/app-signed      | Https endpoint for package download |
 | now_mid_base_path_win  | true     | c:/servicenow          | Base installation path on Windows|
 | now_mid_base_path  | true     | /opt/servicenow          | Base installation on Linux |
 | now_mid_base_user  | false     |           | User |
