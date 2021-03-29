@@ -11,11 +11,12 @@
   set_fact:
     now_instance_build_date: "{{ now_instance_stats.content | regex_search('Build date: ([^<]{1,})') }}"
     now_instance_mid_buildstamp: "{{ now_instance_stats.content | regex_search('MID buildstamp: ([^<]{1,})') }}"
-
+    
 - name: Set ServiceNow build facts
   set_fact:
     now_instance_build_date: "{{ now_instance_build_date.split(': ')[1] }}"
     now_instance_mid_buildstamp: "{{ now_instance_mid_buildstamp.split(': ')[1] }}"
+    now_instance_name: "{{ now_instance_mid_buildstamp.split('_')[0].split('-')[0] }}"
 
 - name: Set ServiceNow build dates
   set_fact:
