@@ -16,7 +16,6 @@
   set_fact:
     now_instance_build_date: "{{ now_instance_build_date.split(': ')[1] }}"
     now_instance_mid_buildstamp: "{{ now_instance_mid_buildstamp.split(': ')[1] }}"
-    now_instance_name: "{{ now_instance_mid_buildstamp.split('_')[0].split('-')[0] }}"
 
 - name: Set ServiceNow build dates
   set_fact:
@@ -40,7 +39,7 @@
 
 - name: Download and unzip MID install file
   unarchive:
-    src: "{{ now_mid_base_https_uri }}/{{ now_instance_build }}.linux.{{ ansible_architecture | regex_replace('_', '-') }}.zip"
+    src: "{{ now_mid_base_https_uri }}/mid/{{ now_instance_build }}/mid.{{now_instance_mid_buildstamp}}.linux.{{ ansible_architecture | regex_replace('_', '-') }}.zip"
     dest: "{{ now_mid_base_path }}"
     remote_src: yes
 
