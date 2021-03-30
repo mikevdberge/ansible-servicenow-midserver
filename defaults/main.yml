@@ -2,7 +2,7 @@
 now_instance_mid_name:
 now_mid_base_https_uri: "https://install.service-now.com/glide/distribution/builds/package/app-signed"
 now_mid_base_path_win: "c:/servicenow"
-now_mid_base_path: "/opt/servicenow"
+now_mid_base_path: "/opt/servicenow/mid"
 now_mid_base_user:
 now_mid_base_group:
 mid_proxy_use_proxy: False
